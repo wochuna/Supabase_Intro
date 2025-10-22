@@ -20,15 +20,14 @@ supabase = create_client(url, key)
 # Sign in a user
 try:
     response = supabase.auth.sign_in_with_password(
-        "email" ="lynne@gmail.com",
-        "password" ="lynne1",
-        )
+        {
+        "email":"lynne@gmail.com",
+        "password":"lynne1",
+        }
+    )
     print("Login successful:", response)
 except Exception as e:
     print("Login failed:", str(e))
 
 
-
-# Sign out
-# response = supabase.auth.sign_out()
 
