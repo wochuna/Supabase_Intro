@@ -7,7 +7,15 @@ url = os.environ.get("SUPABASE_URL")
 key = os.environ.get("SUPABASE_KEY")
 supabase = create_client(url, key)
 
-# Finding items in the table
+
+response = (
+    supabase.table("todos")
+    .select("*")
+    .execute()
+)
+print(response) # Ue supabase doc
+
+'''# Finding items in the table
 data = supabase.table("todos").select("*").execute()
 data = supabase.table("todos").select("id,name").execute() # Fetch specific item
 data = supabase.table("todos").select("id,name").eq("name", "item 2").execute() # Fetch in item equal to the stated
@@ -24,4 +32,4 @@ data = supabase.table("todos").update({"name": "Work out"}).eq("id", 2).execute(
 
 # Deleting items 
 data = supabase.table("todos").delete().eq("name", "Work out").execute()
-print(data)
+print(data)'''
