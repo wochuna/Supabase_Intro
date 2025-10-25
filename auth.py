@@ -10,26 +10,44 @@ supabase = create_client(url, key)
 
 
 # Sign up a user
-
-'''response = supabase.auth.sign_up(
+def sign_up(email, password):
+    try:
+        user = supabase.auth.sign_up(
     {
         "email": "wochunayvonne@gmail.com",
         "password": "trysupabase1234",
     }
-)'''
+)
+        return user
+    except Exception as e:
+        st.error(f"Registration failed: {e}") 
 
 # Sign in a user
-session = None
-try:
-    session = supabase.auth.sign_in_with_password(
-        {
-        "email":"lynne@gmail.com",
-        "password":"lynne1",
-        }
-    )
-    print(session)
-except Exception as e:
-    print("Login failed:", str(e))
+def sign_in_with_password(email, password):
+    try:
+        user = supabase.auth.sign_up(
+    {
+        "email": "wochunayvonne@gmail.com",
+        "password": "trysupabase1234",
+    }
+)
+        return user
+    except Exception as e:
+        st.error(f"Login failed failed: {e}") 
 
+# Sign out
+def sign_out():
+    try:
+        supabase.auth.sign_up()
+        st.session_state.user_email = None
+        st.rerun()
+    except Exception as e:
+        st.error(f"Logout failed: {e}")
+
+def main_app(user_email):
+    st.title("Welcome page")
+    st.success(f"Welcome, {user_email}")
+    if st.button("Logout"):
+        sign_out()
 
 
