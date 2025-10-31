@@ -13,23 +13,24 @@ response = (
     .select("*")
     .execute()
 )
-print(response) # Ue supabase doc
+print(response)
 
 '''# Finding items in the table
 data = supabase.table("todos").select("*").execute()
 data = supabase.table("todos").select("id,name").execute() # Fetch specific item
-data = supabase.table("todos").select("id,name").eq("name", "item 2").execute() # Fetch in item equal to the stated
+data = supabase.table("todos").select("id,name").eq("name", "item 2").execute() # Fetch in item equal to the stated'''
 
 
 # Inserting items in the table
 data = supabase.table("todos").insert({"name": "item 2"}).execute()
+data = supabase.table("todos").insert({"name": "bathing soap"}).execute()
 
 
-# Update items
+'''# Update items
 data = supabase.table("todos").update({"name": "Code"}).eq("name", "item 1").execute() # update using name
 data = supabase.table("todos").update({"name": "Work out"}).eq("id", 2).execute() # update using id
 
 
 # Deleting items 
-data = supabase.table("todos").delete().eq("name", "Work out").execute()
-print(data)'''
+data = supabase.table("todos").delete().eq("name", "Work out").execute()'''
+print(data)
